@@ -1,8 +1,10 @@
-﻿
+﻿using Microsoft.Maui.Platform;
+using PInvokeNet7;
+using System.Runtime.InteropServices;
 using Microsoft.Maui.Platform;
 using System.Runtime.InteropServices;
 
-namespace PInvoke
+namespace PInvokeNet7
 {
     public partial class App : Application
     {
@@ -19,7 +21,7 @@ namespace PInvoke
 
             window.HandlerChanged += (sender, e) =>
             {
-                if(sender is Window mauiWindow && mauiWindow.Handler is IElementHandler handler) 
+                if (sender is Window mauiWindow && mauiWindow.Handler is IElementHandler handler)
                 {
                     Dispatcher.Dispatch(() =>
                     {
@@ -54,6 +56,7 @@ namespace PInvoke
         private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong); 
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
     }
 }
+
